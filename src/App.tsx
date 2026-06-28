@@ -1,8 +1,8 @@
 import "./App.css";
-import { BuscaEstagios } from "./pages/BuscaEstagios";
+import BuscaVagas from "./pages/BuscaVagas";
 
 function App() {
-  return <BuscaEstagios />;
+  return <BuscaVagas />;
 }
 
 export default App;

@@ -1,7 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { BuscaEstagios } from "../pages/BuscaEstagios";
+import BuscaVagas from "../pages/BuscaVagas";
 
-const router = createBrowserRouter([
-  { index: true, element: <BuscaEstagios /> },
-]);
+const router = createBrowserRouter([{ index: true, element: <BuscaVagas /> }]);
 export default router;
