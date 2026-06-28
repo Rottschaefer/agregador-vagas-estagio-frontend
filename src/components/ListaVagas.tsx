@@ -13,20 +13,32 @@ const ListaVagas = () => {
         error: error,
     } = useBuscaVagas(nomeVaga, localidade, fonteSelecionada);
 
-    if(isFetching) return <p>Buscando...</p>
+    if(isFetching) return <p className="text-center text-base font-thin md:text-start md:ms-2">Buscando...</p>
 
     {/* Exibição dos Resultados da API */}
     return (
-        <div className="w-full px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mt-8 pb-8">
+        <div className="w-full px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-6 mt-8 pb-8">
             {error && (
-                <p className="text-red-500 text-center">Ops, erro: {error.message}</p>
+                <>
+                    <div className="">
+                        <p className="text-2xl font-semibold text-purple-500">
+                            Oops...
+                        </p>
+                        <p className="text-xl mt-5">
+                            Algo deu <span className="text-teal-600">errado!</span> 🫤 
+                        </p>
+                        <p className="mt-3">
+                            Erro: {error.message}
+                        </p>
+                    </div>
+                </>
             )}
 
-            {vagas?.map((vaga: any) => (
+            {!error && vagas?.map((vaga: any) => (
                 
                 <a href={vaga.link} target="_blank" className="block">
                     <div                    key={vaga.id}
-                    className="bg-gray-100 rounded-3xl p-6 text-purple-600 shadow-md"
+                    className="bg-gray-100 rounded-3xl p-6 text-purple-600 shadow-md h-full"
                     >
                         <div className="flex justify-between items-start">
                             <h2 className="text-xl font-bold">{vaga.titulo}</h2>

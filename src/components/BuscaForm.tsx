@@ -20,47 +20,71 @@ const BuscaForm = () => {
     ];
 
     return (
-        <div className="w-full max-w-md px-4 flex flex-col gap-4">
-            <input
-                type="text"
-                placeholder="Nome da vaga"
-                value={nomeVaga}
-                onChange={(e) => setNomeVaga(e.target.value)}
-                className="w-full bg-teal-400 placeholder-teal-700 text-white font-medium rounded-full py-4 text-center outline-none"
-            />
+        <>
+            <h1 className="text-2xl ms-2 font-semibold text-teal-600">Busca</h1>
+            <div className="w-full flex flex-col md:flex-row gap-6">
+                <div className="flex-1 flex flex-col gap-4">
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <div className="relative flex-1">
+                            <input 
+                                type="text"
+                                placeholder=" "
+                                value={nomeVaga}
+                                onChange={(e) => setNomeVaga(e.target.value)}
+                                className="peer w-full placeholder:text-slate-400 text-black text-sm border-2 border-teal-400 rounded-full px-3 py-2 transition duration-300 ease focus:outline-none focus:border-teal-500 hover:border-teal-500 shadow-sm focus:shadow"
+                            />
+                            <label className="absolute cursor-text bg-gray-50 px-1 left-2.5 top-2.5 text-slate-400 text-sm transition-all transform origin-left 
+                                peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-teal-700 peer-focus:scale-90
+                                peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:left-2.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-teal-700 peer-not-placeholder-shown:scale-90">
+                                Nome da vaga
+                            </label>
+                        </div>
 
-            <input
-                type="text"
-                placeholder="Localidade"
-                value={localidade}
-                onChange={(e) => setLocalidade(e.target.value)}
-                className="w-full bg-teal-400 placeholder-teal-700 text-white font-medium rounded-full py-4 text-center outline-none"
-            />
+                        <div className="relative flex-1">
+                            <input 
+                                type="text"
+                                placeholder=" "
+                                value={localidade}
+                                onChange={(e) => setLocalidade(e.target.value)}
+                                className="peer w-full placeholder:text-slate-400 text-black text-sm border-2 border-teal-400 rounded-full px-3 py-2 transition duration-300 ease focus:outline-none focus:border-teal-500 hover:border-teal-500 shadow-sm focus:shadow"
+                            />
+                            <label className="absolute cursor-text bg-gray-50 px-1 left-2.5 top-2.5 text-slate-400 text-sm transition-all transform origin-left 
+                                peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-teal-700 peer-focus:scale-90
+                                peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:left-2.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-teal-700 peer-not-placeholder-shown:scale-90">
+                                Localidade
+                            </label>
+                        </div>
+                    </div>
 
-            {/* Botões horizontais para escolher a plataforma */}
-            <div className="flex overflow-x-auto whitespace-nowrap w-full pb-2 gap-2">
-                {fontes.map((fonte) => (
+                    <div className="flex flex-wrap gap-2">
+                        {fontes.map((fonte) => (
+                            <button
+                                key={fonte}
+                                onClick={() => setFonteSelecionada(fonte)}
+                                className={`px-4 py-2 rounded-full text-sm font-semibold
+                                    ${
+                                        fonteSelecionada === fonte
+                                            ? "bg-purple-600 text-white"
+                                            : "bg-gray-200 text-gray-600"
+                                    }`}
+                            >
+                                {fonte}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div>
                     <button
-                    key={fonte}
-                    onClick={() => setFonteSelecionada(fonte)}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-                        fonteSelecionada === fonte
-                        ? "bg-purple-600 text-white"
-                        : "bg-gray-200 text-gray-600"
-                    }`}
+                        onClick={handleBuscar}
+                        className="w-full md:w-44 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-full py-2 shadow-lg transition-all"
                     >
-                    {fonte}
+                        Buscar
+                        <i className="bi bi-search ms-2.5" />
                     </button>
-                ))}
+                </div>
             </div>
-
-            <button
-                onClick={handleBuscar}
-                className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-full py-4 text-center shadow-lg transition-all"
-                >
-                    Buscar
-            </button>
-        </div>
+        </>
     )
 }
 export default BuscaForm
