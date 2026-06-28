@@ -1,5 +1,5 @@
 import "./App.css";
-import BuscaVagas from "./pages/BuscaVagas";
+import BuscaVagas from "./pages/HomePage";
 
 function App() {
   return <BuscaVagas />;
