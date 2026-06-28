@@ -6,7 +6,13 @@ const BuscaVagas = () => {
   const [localidade, setLocalidade] = useState("");
   const [fonteSelecionada, setFonteSelecionada] = useState("gupy");
 
-  const fontes = ["Gupy", "LinkedIn", "Vagas.com"];
+  const fontes = [
+    "Gupy",
+    "Glassdoor",
+    "InfoJobs",
+    "EstagiarBR",
+    "AcademiaUniversitario",
+  ];
 
   const {
     data: vagas,
@@ -43,7 +49,7 @@ const BuscaVagas = () => {
         />
 
         {/* Botões horizontais para escolher a plataforma */}
-        <div className="flex justify-center gap-2 overflow-x-auto py-2">
+        <div className="flex overflow-x-auto whitespace-nowrap w-full pb-2 gap-2">
           {fontes.map((fonte) => (
             <button
               key={fonte}

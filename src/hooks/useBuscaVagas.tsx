@@ -4,7 +4,7 @@ import { URL_BASE } from "../utils/constantes";
 const fetchVagas = async (nome: string, local: string, fonte: string) => {
   const fonteParam = fonte === "Todas" ? "" : fonte.toLowerCase();
 
-  const url = `${URL_BASE}/buscar-vagas/${fonteParam}?termo=${nome}&local=${local}`;
+  const url = `${URL_BASE}/buscar-vagas?fonte=${fonteParam}&termo=${nome}&local=${local}`;
 
   const response = await fetch(url);
 
