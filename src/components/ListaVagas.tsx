@@ -1,16 +1,19 @@
-import { useState } from "react";
 import { useBuscaVagas } from "../hooks/useBuscaVagas";
+import useBuscaStore from "../store/BuscaStore";
+
 const ListaVagas = () => {
-    const [nomeVaga] = useState("");
-    const [localidade] = useState("");
-    const [fonteSelecionada] = useState("gupy");
+
+    const nomeVaga = useBuscaStore((s) => s.nomePesquisa);
+    const localidade = useBuscaStore((s) => s.localPesquisa);
+    const fonteSelecionada = useBuscaStore((s) => s.fontePesquisa);
 
     const {
         data: vagas,
-        isFetching,
-        error,
-        refetch,
+        isFetching: isFetching,
+        error: error,
     } = useBuscaVagas(nomeVaga, localidade, fonteSelecionada);
+
+    if(isFetching) return <p>Buscando...</p>
 
     {/* Exibição dos Resultados da API */}
     return (

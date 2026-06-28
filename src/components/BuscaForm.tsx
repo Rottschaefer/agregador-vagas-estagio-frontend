@@ -1,10 +1,15 @@
-import { useState } from "react";
-import { useBuscaVagas } from "../hooks/useBuscaVagas";
+import useBuscaStore from "../store/BuscaStore";
 
 const BuscaForm = () => {
-    const [nomeVaga, setNomeVaga] = useState("");
-    const [localidade, setLocalidade] = useState("");
-    const [fonteSelecionada, setFonteSelecionada] = useState("gupy");
+
+    const nomeVaga = useBuscaStore((s) => s.nomeInput);
+    const setNomeVaga = useBuscaStore((s) => s.setNomeInput);
+    const localidade = useBuscaStore((s) => s.localInput);
+    const setLocalidade = useBuscaStore((s) => s.setLocalInput);
+    const fonteSelecionada = useBuscaStore((s) => s.fonteInput);
+    const setFonteSelecionada = useBuscaStore((s) => s.setFonteInput);
+
+    const handleBuscar = useBuscaStore((s) => s.buscar);
     
     const fontes = [
         "Gupy",
@@ -13,17 +18,6 @@ const BuscaForm = () => {
         "EstagiarBR",
         "AcademiaUniversitario",
     ];
-
-    const {
-        data: vagas,
-        isFetching,
-        error,
-        refetch,
-    } = useBuscaVagas(nomeVaga, localidade, fonteSelecionada);
-
-    const handleBuscar = () => {
-        refetch();
-    };
 
     return (
         <div className="w-full max-w-md px-4 flex flex-col gap-4">
@@ -64,7 +58,7 @@ const BuscaForm = () => {
                 onClick={handleBuscar}
                 className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-full py-4 text-center shadow-lg transition-all"
                 >
-                {isFetching ? "Buscando..." : "Buscar"}
+                    Buscar
             </button>
         </div>
     )
