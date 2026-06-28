@@ -17,23 +17,29 @@ const ListaVagas = () => {
 
     {/* Exibição dos Resultados da API */}
     return (
-        <div className="w-full max-w-md px-4 flex flex-col gap-4 mt-8 pb-8">
+        <div className="w-full px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mt-8 pb-8">
             {error && (
                 <p className="text-red-500 text-center">Ops, erro: {error.message}</p>
             )}
 
             {vagas?.map((vaga: any) => (
-                <div
-                    key={vaga.id}
-                    className="bg-teal-400 rounded-3xl p-6 text-center text-white shadow-md"
-                >
-                    <h2 className="text-xl font-bold mb-1">{vaga.titulo}</h2>
-                    <p className="text-teal-100 font-medium">{vaga.empresa}</p>
-                    <p className="text-teal-100">{vaga.localidade || vaga.local}</p>
-                    <p className="text-teal-800 text-sm font-bold mt-2 uppercase tracking-widest">
-                        {vaga.fonte}
-                    </p>
-                </div>
+                
+                <a href={vaga.link} target="_blank" className="block">
+                    <div                    key={vaga.id}
+                    className="bg-gray-100 rounded-3xl p-6 text-purple-600 shadow-md"
+                    >
+                        <div className="flex justify-between items-start">
+                            <h2 className="text-xl font-bold">{vaga.titulo}</h2>
+
+                            <p className="text-gray-100 text-xs font-bold uppercase tracking-widest bg-teal-400/55 px-1.5 rounded-2xl ms-3 me-1 mt-2">
+                            {vaga.fonte}
+                            </p>
+                        </div>
+
+                        <p className="text-gray-600 font-medium mt-1">{vaga.empresa}</p>
+                        <p className="text-gray-600">{vaga.localizacao}</p>
+                    </div>
+                </a>
             ))}
 
             {vagas?.length === 0 && (
