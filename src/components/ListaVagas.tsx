@@ -13,7 +13,16 @@ const ListaVagas = () => {
         error: error,
     } = useBuscaVagas(nomeVaga, localidade, fonteSelecionada);
 
-    if(isFetching) return <p className="text-center text-base font-thin md:text-start md:ms-2">Buscando...</p>
+    if(isFetching) return <div className="flex items-center">
+        <div
+            className="animate-spin rounded-full border-2 border-purple-600 border-t-transparent"
+            style={{
+                width: 15,
+                height: 15,
+            }}
+        />
+        <p className="text-center text-base font-thin md:text-start md:ms-2">Buscando...</p>
+    </div> 
 
     {/* Exibição dos Resultados da API */}
     return (
