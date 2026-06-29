@@ -19,6 +19,5 @@ export function useBuscaVagas(nome: string, local: string, fonte: string) {
   return useQuery({
     queryKey: ["vagas", nome, local, fonte],
     queryFn: () => fetchVagas(nome, local, fonte),
-    enabled: false,
   });
 }
