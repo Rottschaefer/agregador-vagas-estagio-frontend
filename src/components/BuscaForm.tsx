@@ -19,10 +19,15 @@ const BuscaForm = () => {
         "AcademiaUniversitario",
     ];
 
+    const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        handleBuscar();
+    };
+
     return (
         <>
             <h1 className="text-2xl ms-2 font-semibold text-teal-600">Busca</h1>
-            <div className="w-full flex flex-col md:flex-row gap-6">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row gap-6">
                 <div className="flex-1 flex flex-col gap-4">
                     <div className="flex flex-col md:flex-row gap-4">
                         <div className="relative flex-1">
@@ -60,6 +65,7 @@ const BuscaForm = () => {
                         {fontes.map((fonte) => (
                             <button
                                 key={fonte}
+                                type="button"
                                 onClick={() => setFonteSelecionada(fonte)}
                                 className={`px-4 py-2 rounded-full text-sm font-semibold
                                     ${
@@ -76,14 +82,14 @@ const BuscaForm = () => {
 
                 <div>
                     <button
-                        onClick={handleBuscar}
+                        type="submit"
                         className="w-full md:w-44 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-full py-2 shadow-lg transition-all"
                     >
                         Buscar
                         <i className="bi bi-search ms-2.5" />
                     </button>
                 </div>
-            </div>
+            </form>
         </>
     )
 }
