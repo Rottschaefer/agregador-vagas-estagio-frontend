@@ -10,6 +10,14 @@ const BuscaForm = () => {
     const setFonteSelecionada = useBuscaStore((s) => s.setFonteInput);
 
     const handleBuscar = useBuscaStore((s) => s.buscar);
+
+    const handleSelecionarFonte = (fonte: string) => {
+        if (fonteSelecionada === fonte) {
+            setFonteSelecionada(""); 
+        } else {
+            setFonteSelecionada(fonte);
+        }
+    };
     
     const fontes = [
         "Gupy",
@@ -66,8 +74,8 @@ const BuscaForm = () => {
                             <button
                                 key={fonte}
                                 type="button"
-                                onClick={() => setFonteSelecionada(fonte)}
-                                className={`px-4 py-2 rounded-full text-sm font-semibold
+                                onClick={() => handleSelecionarFonte(fonte)}
+                                className={`px-4 py-2 rounded-full text-sm font-semibold cursor-pointer
                                     ${
                                         fonteSelecionada === fonte
                                             ? "bg-purple-600 text-white"
@@ -83,7 +91,7 @@ const BuscaForm = () => {
                 <div>
                     <button
                         type="submit"
-                        className="w-full md:w-44 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-full py-2 shadow-lg transition-all"
+                        className="w-full md:w-44 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-full py-2 shadow-lg transition-all cursor-pointer"
                     >
                         Buscar
                         <i className="bi bi-search ms-2.5" />

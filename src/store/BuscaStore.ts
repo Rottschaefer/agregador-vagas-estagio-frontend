@@ -23,8 +23,8 @@ const useBuscaStore = create<BuscaStore>((set, get) => ({
     nomePesquisa: "",
     localInput: "",
     localPesquisa: "",
-    fonteInput: "gupy",
-    fontePesquisa: "gupy",
+    fonteInput: "Glassdoor",
+    fontePesquisa: "Glassdoor",
 
     setNomeInput: (novoNomeInput: string) => set(() => ({nomeInput: novoNomeInput})),
     setNomePesquisa: (novoNomePesquisa: string) => set(() => ({nomePesquisa: novoNomePesquisa})),

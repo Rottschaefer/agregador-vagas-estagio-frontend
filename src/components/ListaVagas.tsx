@@ -43,7 +43,7 @@ const ListaVagas = () => {
                         <div className="flex justify-between items-start">
                             <h2 className="text-xl font-bold">{vaga.titulo}</h2>
 
-                            <p className="text-gray-100 text-xs font-bold uppercase tracking-widest bg-teal-400/55 px-1.5 rounded-2xl ms-3 me-1 mt-2">
+                            <p className="text-gray-100 text-xs font-bold uppercase tracking-widest bg-teal-400/55 px-1.5 rounded-2xl ms-3 me-1 mt-2 text-center">
                             {vaga.fonte}
                             </p>
                         </div>
