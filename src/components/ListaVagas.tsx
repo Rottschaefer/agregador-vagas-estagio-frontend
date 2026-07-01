@@ -49,7 +49,7 @@ const ListaVagas = () => {
 
       {!error &&
         vagas?.map((vaga: any) => (
-          <a href={vaga.link} target="_blank" className="block">
+          <a href={vaga.link} target="_blank" className="block hover:scale-102">
             <div
               key={vaga.id}
               className="bg-gray-100 rounded-3xl p-6 text-purple-600 shadow-md h-full"
