@@ -74,57 +74,59 @@ const ListaVagas = () => {
         </p>
       )}
       {/* Container de Paginação */}
-      {vagas && vagas.length > 0 && (
-        <div className="col-span-full flex justify-center items-center gap-4 mt-10">
-          <button
-            onClick={() => setPaginaAtual(paginaAtual - 1)}
-            disabled={paginaAtual === 1}
-            className="px-6 py-2 rounded-full font-semibold cursor-pointer bg-gray-200 text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300 disabled:opacity-50 disabled:hover:bg-gray-200 disabled:hover:text-purple-600 disabled:cursor-not-allowed shadow-sm flex items-center gap-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2.5}
-              stroke="currentColor"
-              className="w-4 h-4"
+      {vagas &&
+        vagas.length > 0 &&
+        (fonteSelecionada == "Gupy" || fonteSelecionada == "RecrutaEasy") && (
+          <div className="col-span-full flex justify-center items-center gap-4 mt-10">
+            <button
+              onClick={() => setPaginaAtual(paginaAtual - 1)}
+              disabled={paginaAtual === 1}
+              className="px-6 py-2 rounded-full font-semibold cursor-pointer bg-gray-200 text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300 disabled:opacity-50 disabled:hover:bg-gray-200 disabled:hover:text-purple-600 disabled:cursor-not-allowed shadow-sm flex items-center gap-2"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5 8.25 12l7.5-7.5"
-              />
-            </svg>
-            Anterior
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 19.5 8.25 12l7.5-7.5"
+                />
+              </svg>
+              Anterior
+            </button>
 
-          <span className="text-gray-500 font-medium text-sm">
-            Página {paginaAtual}
-          </span>
+            <span className="text-gray-500 font-medium text-sm">
+              Página {paginaAtual}
+            </span>
 
-          <button
-            onClick={() => setPaginaAtual(paginaAtual + 1)}
-            disabled={isFetching || vagas.length === 0}
-            className="px-6 py-2 rounded-full font-semibold cursor-pointer bg-purple-600 text-white hover:bg-purple-700 transition-all duration-300 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-          >
-            Próxima
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2.5}
-              stroke="currentColor"
-              className="w-4 h-4"
+            <button
+              onClick={() => setPaginaAtual(paginaAtual + 1)}
+              disabled={isFetching || vagas.length === 0}
+              className="px-6 py-2 rounded-full font-semibold cursor-pointer bg-purple-600 text-white hover:bg-purple-700 transition-all duration-300 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </button>
-        </div>
-      )}
+              Próxima
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
     </div>
   );
 };
